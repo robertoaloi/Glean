@@ -43,6 +43,23 @@ jobs:
           echo "MAKEFLAGS=-j$(nproc)" >> "$GITHUB_ENV"
           echo "EXTRA_GHC_OPTS=-j$(nproc) +RTS -A128m -n2m -RTS" >> "$GITHUB_ENV"
 
+      - name: Setup Erlang
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: 27.3
+          install-rebar: false
+          install-hex: false
+
+      - name: Install indexer (erlang)
+        run: |
+          export ELP=2025-10-21
+          curl -L https://github.com/whatsapp/erlang-language-platform/releases/download/${ELP}/elp-linux-x86_64-unknown-linux-gnu-otp-27.3.tar.gz | tar -xzOf - > "$LOCAL_BIN"/elp
+          chmod +x "$LOCAL_BIN"/elp
+
+      - name: Test Erlang indexer
+        run: |
+          elp version
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
