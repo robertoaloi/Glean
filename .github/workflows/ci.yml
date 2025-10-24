@@ -19,11 +19,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Initialize APT
-        run: |
-          apt-get update
-          apt-get install -y curl
-
       - name: Setup en_US.UTF-8 locale
         run: |
           apt-get install -y locales
