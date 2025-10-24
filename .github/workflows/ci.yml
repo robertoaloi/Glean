@@ -14,7 +14,7 @@ jobs:
         ghc: [9.2.8, 9.4.7, 9.6.7]
         compiler: [gcc]
         index-state: [2025-04-14T00:00:00Z]
-    runs-on: 32-core-ubuntu
+    runs-on: ubuntu-latest
     container:
       image: ubuntu:24.04
       options: --security-opt=seccomp=unconfined
