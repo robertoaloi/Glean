@@ -15,9 +15,6 @@ jobs:
         compiler: [gcc]
         index-state: [2025-04-14T00:00:00Z]
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:24.04
-      options: --security-opt=seccomp=unconfined
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
